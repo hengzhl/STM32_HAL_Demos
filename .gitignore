@@ -1,0 +1,38 @@
+# --- 编译输出 (Object/Listing) ---
+Debug/
+Release/
+bin/
+obj/
+Listings/
+Objects/
+
+# --- Keil MDK 中间文件 ---
+*.o
+*.d
+*.crf
+*.elf
+*.hex
+*.bin
+*.map
+*.dep
+*.bak
+*.lnp
+*.lst
+*.htm
+*.build_log.htm
+*.scvd
+
+# --- 用户特定设置 (必须忽略，否则会冲突) ---
+*.uvgui.*
+*.uvguix.*
+
+# --- STM32CubeMX ---
+.mxproject
+
+# --- 操作系统 ---
+.DS_Store
+Thumbs.db
+
+# --- 注意：不要忽略以下后缀 (确保它们不在上面的列表里) ---
+# !*.ioc
+# !*.uvprojx
