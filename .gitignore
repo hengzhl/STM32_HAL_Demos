@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 # --- 编译输出 (Object/Listing) ---
+=======
+# 
+
+>>>>>>> 79e042b7d89a44864b95960386034ecaebd7a9f8
 Debug/
 Release/
 bin/
 obj/
+<<<<<<< HEAD
 Listings/
 Objects/
 
@@ -10,10 +16,22 @@ Objects/
 *.o
 *.d
 *.crf
+=======
+
+
+
+.mxproject
+*.bak
+*.dep
+*.crf
+*.o
+*.d
+>>>>>>> 79e042b7d89a44864b95960386034ecaebd7a9f8
 *.elf
 *.hex
 *.bin
 *.map
+<<<<<<< HEAD
 *.dep
 *.bak
 *.lnp
@@ -36,3 +54,10 @@ Thumbs.db
 # --- 注意：不要忽略以下后缀 (确保它们不在上面的列表里) ---
 # !*.ioc
 # !*.uvprojx
+=======
+
+
+
+.DS_Store
+Thumbs.db
+>>>>>>> 79e042b7d89a44864b95960386034ecaebd7a9f8
