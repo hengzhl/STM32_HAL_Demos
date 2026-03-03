@@ -91,8 +91,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  si5351_SetOutputFreq(0, 100000, SI_CLK_SRC_PLL_A, SI_R_DIV_64); // 设置通道0输出100KHz，使用PLL A作为时钟源，R分频64
-
+	SI5351_Init();
+  // 设置通道0输出100KHz，使用PLL A作为时钟源
+  SI5351_SetFrequency(0, 100000 , SI_REG_PLL_A);
   /* USER CODE END 2 */
 
   /* Infinite loop */

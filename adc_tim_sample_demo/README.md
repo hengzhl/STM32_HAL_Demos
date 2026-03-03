@@ -1,6 +1,14 @@
 ## TIM驱动ADC采样并串口发送
 
+### 功能
+
 `adc_tim_sample_demo`
+
+定时器产生驱动事件，控制ADC采样电信号，处理信号，将处理后的信号以稳定方式发送到串口屏。
+
+![波形](https://raw.githubusercontent.com/hengzhl/img-bed/main/img/QQ20260303-185133.jpg)
+
+数据处理 ADC 缓冲区，提取一个周期，缩放至 0-200 并重采样为固定点数发送。
 
 ### STM32CubeMX
 

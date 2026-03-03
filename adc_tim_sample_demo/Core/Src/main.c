@@ -126,7 +126,6 @@ int main(void)
 
     toShow(ADCBuffer, sampleLEN); //处理ADC数据并发送
 
-    HAL_Delay(500); //适当延时，避免过快刷新
 
 
   }
@@ -223,14 +222,18 @@ void toShow(uint16_t* ADCBuffer, uint16_t LEN) {
     // 3. 自适应重采样：无论原始周期有多少点，统一变换为 200 点输出
     // 480个点实现五个周期，平均每个周期96点，重采样为90点可以平滑显示
     uint16_t targetPoints = 90; // 设定发送点数，通过平均降采样实现平滑
-    uint16_t sendBuffer[200]; 
+    uint16_t sendBuffer[targetPoints]; 
     
     resample_u16(oneCycleData, cycleLen, sendBuffer, targetPoints);
 
     // 4. 发送数据 
     for (int i = 0; i < targetPoints; i++) {
         TJCPrintf("add s0.id,0,%d", sendBuffer[i]);
+			  HAL_Delay(10);
     }
+		
+		
+		
 
     // 5. 必须释放 find_one_cycle 申请的堆空间
     free(oneCycleData);
