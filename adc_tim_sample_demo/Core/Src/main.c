@@ -40,7 +40,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define sampleLEN 2048
-#define showPoints 128  // 设定发送点数，通过平均降采样实现平滑
+#define showPoints 90  // 设定发送点数，通过平均降采样实现平滑
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -217,22 +217,20 @@ void toShow(uint16_t* ADCBuffer, uint16_t LEN) {
 
     // 2. 将电压值等比例缩放到 0 - 200 范围
     // 这样做可以确保无论原始采样精度如何，最终输出都在 0-200 之间
-    scale_array(oneCycleData, cycleLen, 0, 200);
+    scale_array(oneCycleData, cycleLen, 0, 170);
 
     // 3. 自适应重采样：无论原始周期有多少点，统一变换为 200 点输出
     // 480个点实现五个周期，平均每个周期96点，重采样为90点可以平滑显示
-    uint16_t targetPoints = 90; // 设定发送点数，通过平均降采样实现平滑
-    uint16_t sendBuffer[targetPoints]; 
+    // 因此宏定义 showPoints 设为90
+    uint16_t sendBuffer[showPoints]; 
     
-    resample_u16(oneCycleData, cycleLen, sendBuffer, targetPoints);
+    resample_u16(oneCycleData, cycleLen, sendBuffer, showPoints);
 
     // 4. 发送数据 
-    for (int i = 0; i < targetPoints; i++) {
+    for (int i = 0; i < showPoints; i++) {
         TJCPrintf("add s0.id,0,%d", sendBuffer[i]);
 			  HAL_Delay(10);
     }
-		
-		
 		
 
     // 5. 必须释放 find_one_cycle 申请的堆空间
