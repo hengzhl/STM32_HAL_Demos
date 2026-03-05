@@ -29,13 +29,13 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define LENGTH 100 		//接受缓冲区大小
+#define usartRx 100 		//接受缓冲区大小
 
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-void ProcessData(uint8_t *data, uint16_t size);
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -46,7 +46,7 @@ void ProcessData(uint8_t *data, uint16_t size);
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint8_t RxBuffer[LENGTH];	//接收缓冲区
+uint8_t RxBuffer[usartRx];	//接收缓冲区
 
 /* USER CODE END PV */
 
@@ -54,7 +54,7 @@ uint8_t RxBuffer[LENGTH];	//接收缓冲区
 void SystemClock_Config(void);
 static void MPU_Config(void);
 /* USER CODE BEGIN PFP */
-
+void ReceiveData(uint8_t *data, uint16_t size);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -98,7 +98,7 @@ int main(void)
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  HAL_UARTEx_ReceiveToIdle_DMA(&huart3, RxBuffer, LENGTH);  // 启动DMA接收，接收完成后触发空闲中断
+  HAL_UARTEx_ReceiveToIdle_DMA(&huart3, RxBuffer, usartRx);  // 启动DMA接收，接收完成后触发空闲中断
   __HAL_DMA_DISABLE_IT(huart3.hdmarx, DMA_IT_HT);           // 关闭DMA半传输中断
 
   /* USER CODE END 2 */
@@ -186,13 +186,13 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
     if (huart->Instance != USART3)
         return;
 
-    ProcessData(RxBuffer, Size);
+    ReceiveData(RxBuffer, Size);
 
-    HAL_UARTEx_ReceiveToIdle_DMA(huart, RxBuffer, LENGTH);
+    HAL_UARTEx_ReceiveToIdle_DMA(huart, RxBuffer, usartRx);
     __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
 }
 
-void ProcessData(uint8_t *data, uint16_t size)
+void ReceiveData(uint8_t *data, uint16_t size)
 {
     //将接受的数据原样返回，用于串口调试助手显示
     HAL_UART_Transmit(&huart3, (uint8_t *)&size, sizeof(size), HAL_MAX_DELAY);
