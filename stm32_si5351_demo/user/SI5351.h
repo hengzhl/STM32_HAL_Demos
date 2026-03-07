@@ -14,7 +14,7 @@
 
 // Si5351A 寄存器
 #define SI_I2C_ADDR             0xC0
-#define SI_XTAL_FREQ            (25000000 + 2265)
+#define SI_XTAL_FREQ            (25000000 + 2905)
 
 #define SI_REG_OUTPUT_EN        3     // 输出使能控制
 #define SI_REG_CLK0_CTRL        16    // CLK0 控制

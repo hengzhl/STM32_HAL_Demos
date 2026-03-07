@@ -93,7 +93,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	SI5351_Init();
   // 设置通道0输出100KHz，使用PLL A作为时钟源
-  SI5351_SetFrequency(0, 100000 , SI_REG_PLL_A);
+	SI5351_SetFrequency(SI_CLK0, 1000000, SI_PLLA); // CLK0 输出 100KHz
+  
+
+ 
   /* USER CODE END 2 */
 
   /* Infinite loop */

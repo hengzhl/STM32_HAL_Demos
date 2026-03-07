@@ -1,4 +1,4 @@
-## 单片机驱动SI5351
+## 单片机驱动SI5351模块
 
 ## 说明
 
@@ -31,9 +31,9 @@
 
 `STM32H743IIT6`
 
-`PG6`--`User Label(SI5351_SCL)`--`mode(Output Open Drain)`--`output level(High)`--`Pull-up`
+`PG6`--`User Label(SI5351_SCL)`--`mode(Output Push Pull)`--`output level(High)`--`Pull-up`
 
-`PG8`--`User Label(SI5351_SDA)`--`mode(Output Open Drain)`--`output level(High)`--`Pull-up`
+`PG8`--`User Label(SI5351_SDA)`--`mode(Output Push Pull)`--`output level(High)`--`Pull-up`
 
 ### Keil
 
@@ -42,8 +42,22 @@
 ```
 
 ```c
-si5351_SetOutputFreq(0, 100000, SI_CLK_SRC_PLL_A, SI_R_DIV_64); 
-// 设置通道0输出100KHz，使用PLL A作为时钟源，R分频64
+SI5351_Init();
+SI5351_SetFrequency(SI_CLK0, 100000, SI_PLLA); // CLK0 输出 100KHz
 ```
 
 > 驱动文件在user文件夹中。
+
+
+
+
+
+
+
+### 结果与修正
+
+输出的方波信号频率可能存在1Hz以内的信号偏差，请在SI5351.h中修改宏定义，实验测试修正晶体频率即可。我的模块误差需要修正`2905`
+
+```c
+#define SI_XTAL_FREQ            (25000000 + 2905)
+```
