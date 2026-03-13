@@ -4,7 +4,7 @@
 
 ### STM32CubeMX
 
-USART3--Asynchronous--DMA（Normal）--NVIC
+`USART3`--`Asynchronous`--`DMA（Normal）`--`NVIC`
 
 ### Keil
 
