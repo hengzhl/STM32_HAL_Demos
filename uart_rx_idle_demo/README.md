@@ -9,7 +9,7 @@
 ### Keil
 
 ```c
-#define usartRx100         //接受缓冲区大小
+#define usartRx 100         //接受缓冲区大小
 void ProcessData(uint8_t *data, uint16_t size);
 uint8_t RxBuffer[usartRx];    //接收缓冲区
 ```
