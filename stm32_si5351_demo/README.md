@@ -4,7 +4,7 @@
 
 `stm32_si5351_demo`
 
-在STMCubeMX中为PG6和PG8添加上标签后，在main.h文件中存在，
+在STMCubeMX中为PG6（SI5351_SCL）和PG8（SI5351_SDA）添加上标签后，在main.h文件中存在，
 
 ```c
 #define SI5351_SCL_Pin GPIO_PIN_6
