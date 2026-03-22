@@ -1,22 +1,22 @@
 {
     "configurations": [
         {
-            "name": "adc_tim_sample_demo",
+            "name": "thd_mdk_demo3",
             "includePath": [
-                "d:\\STM32\\MDK_Project\\STM32_HAL_Demos\\adc_tim_sample_demo\\Core\\Inc",
-                "d:\\STM32\\MDK_Project\\STM32_HAL_Demos\\adc_tim_sample_demo\\Drivers\\STM32H7xx_HAL_Driver\\Inc",
-                "d:\\STM32\\MDK_Project\\STM32_HAL_Demos\\adc_tim_sample_demo\\Drivers\\STM32H7xx_HAL_Driver\\Inc\\Legacy",
-                "d:\\STM32\\MDK_Project\\STM32_HAL_Demos\\adc_tim_sample_demo\\Drivers\\CMSIS\\Device\\ST\\STM32H7xx\\Include",
-                "d:\\STM32\\MDK_Project\\STM32_HAL_Demos\\adc_tim_sample_demo\\Drivers\\CMSIS\\Include",
-                "d:\\STM32\\MDK_Project\\STM32_HAL_Demos\\adc_tim_sample_demo\\user",
-                "d:\\STM32\\MDK_Project\\STM32_HAL_Demos\\adc_tim_sample_demo\\MDK-ARM",
-                "d:\\STM32\\MDK_Project\\STM32_HAL_Demos\\adc_tim_sample_demo\\Core\\Src",
-                "d:\\STM32\\MDK_Project\\STM32_HAL_Demos\\adc_tim_sample_demo\\Drivers\\STM32H7xx_HAL_Driver\\Src"
+                "d:\\STM32\\MDK_Project\\thd_mdk_demo3\\Core\\Inc",
+                "d:\\STM32\\MDK_Project\\thd_mdk_demo3\\Drivers\\STM32H7xx_HAL_Driver\\Inc",
+                "d:\\STM32\\MDK_Project\\thd_mdk_demo3\\Drivers\\STM32H7xx_HAL_Driver\\Inc\\Legacy",
+                "d:\\STM32\\MDK_Project\\thd_mdk_demo3\\Drivers\\CMSIS\\Device\\ST\\STM32H7xx\\Include",
+                "d:\\STM32\\MDK_Project\\thd_mdk_demo3\\Drivers\\CMSIS\\Include",
+                "d:\\STM32\\MDK_Project\\thd_mdk_demo3\\user",
+                "d:\\STM32\\MDK_Project\\thd_mdk_demo3\\MDK-ARM",
+                "d:\\STM32\\MDK_Project\\thd_mdk_demo3\\Core\\Src",
+                "d:\\STM32\\MDK_Project\\thd_mdk_demo3\\Drivers\\STM32H7xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_PWR_LDO_SUPPLY",
                 "USE_HAL_DRIVER",
-                "STM32H743xx",
+                "STM32H723xx",
                 "__alignof__(x)=",
                 "__asm(x)=",
                 "__asm__(x)=",

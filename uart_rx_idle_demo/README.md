@@ -4,14 +4,14 @@
 
 ### STM32CubeMX
 
-USART3--Asynchronous--DMA（Normal）--NVIC
+`USART3`--`Asynchronous`--`DMA（USART3_RX/Normal）`--`NVIC`
 
 ### Keil
 
 ```c
-#define usartRx100         //接受缓冲区大小
-void ProcessData(uint8_t *data, uint16_t size);
+#define usartRx 100         //接受缓冲区大小
 uint8_t RxBuffer[usartRx];    //接收缓冲区
+void ReceiveData(uint8_t *data, uint16_t size);
 ```
 
 ```c
