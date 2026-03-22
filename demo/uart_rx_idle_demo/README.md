@@ -1,6 +1,8 @@
 ## 串口接收不定长数据
 
-`uart_rx_idle_demo`
+### Demo介绍
+
+`uart_rx_idle_demo`是一个串口接收不定长数据的demo，适合作为项目中与外界交互的模块。
 
 ### STM32CubeMX
 
@@ -40,3 +42,5 @@ void ReceiveData(uint8_t *data, uint16_t size)
     HAL_UART_Transmit(&huart3, data, size, HAL_MAX_DELAY);
 }
 ```
+
+需要注意的是，需要根据硬件配置，修改串口号，这里为`huart3`

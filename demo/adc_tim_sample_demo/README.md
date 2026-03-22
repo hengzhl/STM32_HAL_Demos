@@ -1,6 +1,6 @@
 ## TIM驱动ADC采样并串口发送
 
-### 功能
+### Demo介绍
 
 `adc_tim_sample_demo`
 
@@ -29,7 +29,7 @@
 #include <stdio.h>
 
 #define sampleLEN 2048
-#define showPoints 90  // 设定发送点数，通过平均降采样实现平滑
+#define showPoints 90  // 设定发送点数，即每周期点数
 
 __IO uint8_t AdcConvEnd = 0;
 uint16_t ADCBuffer[sampleLEN];
@@ -87,7 +87,7 @@ void toShow(uint16_t* ADCBuffer, uint16_t LEN) {
     // 3. 自适应重采样：无论原始周期有多少点，统一变换为 200 点输出
     // 480个点实现五个周期，平均每个周期96点，重采样为90点可以平滑显示
     // 因此宏定义 showPoints 设为90  
-    
+
     uint16_t sendBuffer[showPoints]; // 最终发送缓冲区，大小为 showPoints
 
     resample_u16(oneCycleData, cycleLen, sendBuffer,  showPoints);

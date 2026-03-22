@@ -1,8 +1,8 @@
 ## 单片机驱动SI5351模块
 
-## 说明
+## Demo介绍
 
-`stm32_si5351_demo`
+`stm32_si5351_demo`是关于外部时钟源SI5351模块的单片机配置说明。
 
 在STMCubeMX中为PG6和PG8添加上标签后，在main.h文件中存在，
 
@@ -47,12 +47,6 @@ SI5351_SetFrequency(SI_CLK0, 100000, SI_PLLA); // CLK0 输出 100KHz
 ```
 
 > 驱动文件在user文件夹中。
-
-
-
-
-
-
 
 ### 结果与修正
 

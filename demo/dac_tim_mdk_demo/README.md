@@ -1,10 +1,14 @@
 ## TIM接外部时钟源驱动DAC输出
 
-### 功能
+### Demo介绍
 
 `dac_tim_mdk_demo`
 
 `Demo`基于`stm32_si5351_demo`，根据配置信息，调整外部时钟源的信号频率，调整波形输出函数，完成DAC输出不同波形。
+
+内部原理：SI5351模块作为定时器TIM的外部时钟源，驱动定时器产生更新事件，触发DAC工作。
+
+
 
 ### STM32CubeMX
 
@@ -27,7 +31,7 @@
 #include "signal.h"
 ```
 
-```C
+```c
 typedef struct
 {
     uint16_t frequency;   // 频率值,单位Hz 
@@ -40,7 +44,7 @@ typedef struct
     __IO uint8_t IsChanging;   // 结构体信息是否发生改变(0-否,1-是)
 } gen;
 
-gen signal = {
+gen signal = { // 标志位是为了日后接收外部信号而保留
     .IsRunning = 0 ,
     .IsChanging = 0
 };
@@ -50,7 +54,7 @@ gen signal = {
 void signal_dac_start(gen* p );
 void gen_signal_cfg(gen* p);
 
-void gen_signal_cfg(gen* p)
+void gen_signal_cfg(gen* p) // 固定波形信息
 {
   p->wave_type=3;
   p->frequency=10000;
@@ -62,7 +66,8 @@ void gen_signal_cfg(gen* p)
 
 void signal_dac_start(gen* p )
 {
-  if(p->IsRunning==1){
+  // 如果硬件正在工作-->先关闭DMA和TIM
+  if(p->IsRunning==1){ 
     HAL_DAC_Stop_DMA(&hdac1, DAC1_CHANNEL_2);
     HAL_TIM_Base_Stop(&htim4);
   }
@@ -76,8 +81,9 @@ void signal_dac_start(gen* p )
   }
 
   uint32_t CLK=2*NPoints*p->frequency;  //定时器二分频，计算Si5351外部时钟源频率
-
   SI5351_SetFrequency(SI_CLK0, CLK, SI_PLLA); // 设置通道0提供TIM4外部时钟源
+  
+  // 打开TIM和DMA，硬件开始工作，标志位置1
   HAL_TIM_Base_Start(&htim4);     //开启定时器4
   HAL_DAC_Start_DMA(&hdac1, DAC1_CHANNEL_2, (uint32_t *)p->wave_table, NPoints, DAC_ALIGN_12B_R);
   p->IsRunning=1;
